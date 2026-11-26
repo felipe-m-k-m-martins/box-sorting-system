@@ -103,6 +103,10 @@ Comments in the firmware are in Portuguese.
 
 Final project of the Microcontroller Systems course at UTFPR by Gabriela Bosco Azevedo, Felipe Martins and Lucas Hemann Horn.
 
+## Attribution and usage
+
+This repository is shared for portfolio and educational purposes. It is a group project by Gabriela Bosco Azevedo, Felipe Martins and Lucas Hemann Horn. No license is granted for reuse or redistribution of the code, images or text. If you want to use any of it, please contact me on [LinkedIn](https://www.linkedin.com/in/felipe-m-k-m-martins).
+
 ## Author
 
 Felipe Martins, Mechatronics Engineering student at UTFPR, double degree at ENSTA.
