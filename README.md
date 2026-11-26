@@ -105,5 +105,5 @@ Final project of the Microcontroller Systems course at UTFPR by Gabriela Bosco A
 
 ## Author
 
-Felipe Martins, Mechatronics Engineering student at UTFPR, double degree at ENSTA Bretagne.
+Felipe Martins, Mechatronics Engineering student at UTFPR, double degree at ENSTA.
 [LinkedIn](https://www.linkedin.com/in/felipe-m-k-m-martins)
