@@ -6,7 +6,7 @@ Group project that classifies boxes as small (P), medium (M) or large (G) on a c
 
 ## Overview
 
-Final project of the Microcontroller Systems course at UTFPR (2026). A first arm places a box on the conveyor, three infrared barriers measure its height while it passes, a limit switch stops the belt at the end, and a second arm picks the box up. The system is controlled and monitored from a web page, a local OLED display, an RGB LED and a buzzer, It has an emergency mode triggered by a button, the web page or a dedicated alarm sensor, and a separate high temperature alarm.
+Final project of the Microcontroller Systems course at UTFPR (2026). A first arm places a box on the conveyor, three infrared barriers measure its height while it passes, a limit switch stops the belt at the end, and a second arm picks the box up. The system is controlled and monitored from a web page, a local OLED display, an RGB LED and a buzzer. It has an emergency mode triggered by a button, the web page or a dedicated alarm sensor, and a separate high temperature alarm.
 
 ## System architecture
 
