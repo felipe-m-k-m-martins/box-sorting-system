@@ -6,7 +6,7 @@ Group project that classifies boxes as small (P), medium (M) or large (G) on a c
 
 ## Overview
 
-Final project of the Microcontroller Systems course at UTFPR (2026). A first arm places a box on the conveyor, three infrared barriers measure its height while it passes, a limit switch stops the belt at the end, and a second arm picks the box up. The system is controlled and monitored from a web page, a local OLED display, an RGB LED and a buzzer, and it has an emergency mode triggered by a button, the web page, high temperature or a dedicated alarm sensor.
+Final project of the Microcontroller Systems course at UTFPR (2026). A first arm places a box on the conveyor, three infrared barriers measure its height while it passes, a limit switch stops the belt at the end, and a second arm picks the box up. The system is controlled and monitored from a web page, a local OLED display, an RGB LED and a buzzer, It has an emergency mode triggered by a button, the web page or a dedicated alarm sensor, and a separate high temperature alarm.
 
 ## System architecture
 
@@ -54,7 +54,9 @@ stateDiagram-v2
     EMERGENCIA --> IDLE: reset
 ```
 
-Emergency can interrupt any state. It has four sources: the S4 button on the board (hardware interrupt), the web page, temperature at or above 45 °C (it clears below 40 °C) and the alarm sensor read by the Mega. In emergency the buzzer plays a siren, the LED turns red and the Mega aborts its movements. Reset (S6 button or web page) returns to idle, or to off if the system was switched off, and leaves the arms where they stopped.
+Emergency can interrupt any state. It has three sources: the S4 button on the board (hardware interrupt), the web page and the alarm sensor read by the Mega (polled over I2C). In emergency the buzzer plays a siren, the LED turns red and the Mega aborts its movements. Reset (S6 button or web page) returns to idle, or to off if the system was switched off, and leaves the arms where they stopped.
+
+The temperature alarm is separate from the emergency. When the LM35 reads 45 °C or more, the ESP32 stops the conveyor, keeps the buzzer on, turns the LED red and pauses the state machine. It does not abort the arm movements on the Mega. The alarm clears by itself when the temperature falls to 40 °C or less, without a reset.
 
 A separate conveyor test mode runs the belt, classifies one box using only the sensors and updates the same counters, without moving the arms.
 
@@ -63,7 +65,7 @@ A separate conveyor test mode runs the belt, classifies one box using only the s
 | Part | Use |
 |---|---|
 | ESP32 on PAT-DAELN v2.1 | Main controller, OLED (SSD1306), RGB LED, buzzer, S4 and S6 buttons |
-| LM35 on GPIO36 | Temperature for the fire alarm |
+| LM35 on GPIO36 | Temperature alarm |
 | Arduino Mega 2560 + RAMPS 1.4 | Motor drivers and sensor inputs |
 | 3 NEMA 17 (A4988) | Lift of arm 1, lift of arm 2, conveyor |
 | 2 28BYJ-48 (ULN2003) | Fork of each arm |
